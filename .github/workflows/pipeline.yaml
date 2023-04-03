@@ -39,3 +39,17 @@ jobs:
                 platforms: linux/amd64
                 push: true
                 tags: progerjkd/flask-app:latest
+    # deployment:
+    #   runs-on: 'ubuntu-latest'
+    #   steps:
+    #   - name: 'Deploy'
+    #     uses: 'deliverybot/helm@master'
+    #     with:
+    #       token: '${{ github.token }}'
+    #       chart: 'app'
+    #       secrets: '${{ toJSON(secrets) }}'
+    #       namespace: production
+    #       release: production-myapp
+    #       value-files: './config/production.yml'
+    #     env:
+    #       KUBECONFIG_FILE: '${{ secrets.KUBECONFIG }}'
