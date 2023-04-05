@@ -49,7 +49,7 @@ ingress:
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/tags: Environment=dev
     alb.ingress.kubernetes.io/group.name: my-group
-    # kubernetes.io/tls-acme: "true"
+    # kubernetes.io/tls-acme: "true" 
   hosts:
     - host:
       paths:
