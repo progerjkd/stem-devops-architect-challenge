@@ -57,7 +57,9 @@ ingress:
   hosts:
     - host: prod.stem.devopswarrior.io
       paths:
-        - path: /*
+        - path: /hello/*
+          pathType: ImplementationSpecific
+        - path: /
           pathType: ImplementationSpecific
           # pathType: Prefix
   # tls:
