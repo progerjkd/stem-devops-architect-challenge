@@ -42,15 +42,20 @@ service:
 
 ingress:
   enabled: true
-  className: "nginx"
+  className: "alb"
   annotations: 
     kubernetes.io/ingress.class: alb
-    kubernetes.io/tls-acme: "true"
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/tags: Environment=dev
+    alb.ingress.kubernetes.io/group.name: my-group
+    # kubernetes.io/tls-acme: "true"
   hosts:
     - host: chart-example.local
       paths:
         - path: /
-          pathType: ImplementationSpecific
+          # pathType: ImplementationSpecific
+          pathType: Prefix
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
