@@ -49,6 +49,8 @@ ingress:
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/tags: Environment=dev
     alb.ingress.kubernetes.io/group.name: my-group
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
+
     # kubernetes.io/tls-acme: "true" 
   hosts:
     - host:
