@@ -49,17 +49,17 @@ ingress:
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/tags: Environment=dev
     alb.ingress.kubernetes.io/group.name: my-group
-    kubernetes.io/tls-acme: "true"
+    # kubernetes.io/tls-acme: "true"
   hosts:
     - host:
       paths:
         - path: /(.*)
           pathType: ImplementationSpecific
           # pathType: Prefix
-  tls:
-   - secretName: chart-example-tls
-     hosts:
-       - chart-example.local
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
 
 resources:
   # We usually recommend not to specify default resources and to leave this as a conscious
