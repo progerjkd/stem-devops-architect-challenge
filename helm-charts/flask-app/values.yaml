@@ -59,7 +59,7 @@ ingress:
       paths:
         # - path: /hello/*
         #   pathType: ImplementationSpecific
-        - path: /*
+        - path: /(.)*
           pathType: ImplementationSpecific
           # pathType: Prefix
   tls:
