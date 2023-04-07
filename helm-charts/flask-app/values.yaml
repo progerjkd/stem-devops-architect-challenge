@@ -57,11 +57,14 @@ ingress:
   hosts:
     - host: flask.example.org
       paths:
-        # - path: /hello/*
-        #   pathType: Prefix
-        - path: /flask
-          pathType: ImplementationSpecific
-          # pathType: Prefix
+      - backend:
+        serviceName: flask-app
+        servicePort: 5000
+        # # - path: /hello/*
+        # #   pathType: Prefix
+        # - path: /flas
+        #   pathType: ImplementationSpecific
+        #   # pathType: Prefix
   tls:
    - secretName: chart-example-tls
      hosts:
