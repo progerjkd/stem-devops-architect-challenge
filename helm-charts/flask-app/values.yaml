@@ -45,7 +45,7 @@ ingress:
   # className: "alb"
   annotations: 
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     # nginx.org/ssl-services: "flask-app"
     # nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     # ingress.kubernetes.io/ssl-redirect: "false"
@@ -58,7 +58,7 @@ ingress:
     # alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
     # alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
     # alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:815125368722:certificate/55cabade-6ae4-4bd3-9c79-c87298d4f086
-    kubernetes.io/tls-acme: "true"
+    # kubernetes.io/tls-acme: "true"
   hosts:
     - host: flask.example.org
       paths:
