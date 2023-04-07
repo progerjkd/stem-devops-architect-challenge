@@ -61,7 +61,7 @@ ingress:
       paths:
         # - path: /hello/*
         #   pathType: ImplementationSpecific
-        - path: /flask
+        - path: /flask/*
           pathType: Prefix
           # pathType: Prefix
   tls:
