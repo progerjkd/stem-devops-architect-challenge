@@ -62,7 +62,7 @@ ingress:
         # - path: /hello/*
         #   pathType: ImplementationSpecific
         - path: /
-          pathType: ImplementationSpecific
+          pathType: Prefix
           # pathType: Prefix
   tls:
    - secretName: chart-example-tls
