@@ -57,10 +57,10 @@ ingress:
   hosts:
     - host: flask.example.org
       paths:
-        # - path: /hello/*
-        #   pathType: Prefix
-        - path: /*
-          pathType: Prefix
+        - path: /hello/*
+          pathType: ImplementationSpecific
+        - path: /
+          pathType: ImplementationSpecific
           # pathType: Prefix
   tls:
    - secretName: chart-example-tls
