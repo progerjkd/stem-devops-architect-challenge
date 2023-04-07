@@ -62,7 +62,7 @@ ingress:
         # - path: /hello/*
         #   pathType: ImplementationSpecific
         - path: /flask/*
-          pathType: Prefix
+          pathType: ImplementationSpecific
           # pathType: Prefix
   tls:
    - secretName: chart-example-tls
