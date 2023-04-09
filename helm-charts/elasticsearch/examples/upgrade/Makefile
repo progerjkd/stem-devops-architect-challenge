@@ -2,15 +2,15 @@ default: test
 
 include ../../../helpers/examples.mk
 
+CHART := elasticsearch
 RELEASE := helm-es-upgrade
+FROM := 7.4.0	# versions before 7.4.O aren't compatible with Kubernetes >= 1.16.0
 
 install:
-	./scripts/upgrade.sh --release $(RELEASE)
+	../../../helpers/upgrade.sh --chart $(CHART) --release $(RELEASE) --from $(FROM)
+	kubectl rollout status statefulset elasticsearch-master
 
-init:
-	helm init --client-only
-
-test: init install goss
+test: install goss
 
 purge:
-	helm del --purge $(RELEASE)
+	helm del $(RELEASE)

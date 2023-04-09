@@ -1,6 +1,6 @@
 # KIND
 
-This example deploy a 3 nodes Elasticsearch 7.9.3 cluster on [Kind][]
+This example deploy a 3 nodes Elasticsearch 7.13.0 cluster on [Kind][]
 using [custom values][].
 
 Note that this configuration should be used for test only and isn't recommended
@@ -8,7 +8,7 @@ for production.
 
 Note that Kind < 0.7.0 are affected by a [kind issue][] with mount points
 created from PVCs not writable by non-root users. [kubernetes-sigs/kind#1157][]
-fix it in Kind 0.7.0
+fix it in Kind 0.7.0.
 
 The workaround for Kind < 0.7.0 is to install manually
 [Rancher Local Path Provisioner][] and use `local-path` storage class for
@@ -28,9 +28,9 @@ Elasticsearch volumes (see [Makefile][] instructions).
   ```
 
 
-[custom values]: https://github.com/elastic/helm-charts/blob/7.9/elasticsearch/examples/kubernetes-kind/values.yaml
+[custom values]: https://github.com/elastic/helm-charts/blob/7.13/elasticsearch/examples/kubernetes-kind/values.yaml
 [kind]: https://kind.sigs.k8s.io/
 [kind issue]: https://github.com/kubernetes-sigs/kind/issues/830
 [kubernetes-sigs/kind#1157]: https://github.com/kubernetes-sigs/kind/pull/1157
 [rancher local path provisioner]: https://github.com/rancher/local-path-provisioner
-[Makefile]: https://github.com/elastic/helm-charts/blob/7.9/elasticsearch/examples/kubernetes-kind/Makefile#L5
+[Makefile]: https://github.com/elastic/helm-charts/blob/7.13/elasticsearch/examples/kubernetes-kind/Makefile#L5
