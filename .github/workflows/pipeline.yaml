@@ -8,14 +8,10 @@ on:
           - 'flask-app/**'
           - 'helm-charts/**'
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-    # This workflow contains a single job called "build"
     build:
-        # The type of runner that the job will run on
         runs-on: ubuntu-latest
 
-        # Steps represent a sequence of tasks that will be executed as part of the job
         steps:
         -
             name: Checkout
@@ -41,17 +37,3 @@ jobs:
                 platforms: linux/amd64, linux/arm64/v8
                 push: true
                 tags: progerjkd/flask-app:latest
-    # deployment:
-    #   runs-on: 'ubuntu-latest'
-    #   steps:
-    #   - name: 'Deploy'
-    #     uses: 'deliverybot/helm@master'
-    #     with:
-    #       token: '${{ github.token }}'
-    #       chart: 'app'
-    #       secrets: '${{ toJSON(secrets) }}'
-    #       namespace: production
-    #       release: production-myapp
-    #       value-files: './config/production.yml'
-    #     env:
-    #       KUBECONFIG_FILE: '${{ secrets.KUBECONFIG }}'
