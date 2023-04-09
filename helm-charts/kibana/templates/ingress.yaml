@@ -1,37 +1,25 @@
-{{- if .Values.ingress.enabled -}}
-{{- $serviceName := include "kibana.fullname" . -}}
-{{- $servicePort := .Values.service.externalPort -}}
-{{- if semverCompare ">=1.14" .Capabilities.KubeVersion.GitVersion }}
-apiVersion: networking.k8s.io/v1beta1
-{{ else }}
-apiVersion: extensions/v1beta1
-{{- end }}
+# Source: flask-app/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  name: kibana
   labels:
-    app: {{ template "kibana.name" . }}
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    heritage: {{ .Release.Service }}
-    release: {{ .Release.Name }}
-  name: {{ template "kibana.fullname" . }}
+    chart: kibana-3.2.8
+    app.kubernetes.io/name: kibana
+    app.kubernetes.io/instance: kibana
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
   annotations:
-    {{- range $key, $value := .Values.ingress.annotations }}
-      {{ $key }}: {{ $value | quote }}
-    {{- end }}
+    kubernetes.io/ingress.class: nginx
 spec:
   rules:
-    {{- range .Values.ingress.hosts }}
-      {{- $url := splitList "/" . }}
-    - host: {{ first $url }}
+    - host: "kibana.example.org"
       http:
         paths:
-          - path: /{{ rest $url | join "/" }}
+          - path: /
+            pathType: Prefix
             backend:
-              serviceName: {{ $serviceName }}
-              servicePort: {{ $servicePort }}
-    {{- end -}}
-  {{- if .Values.ingress.tls }}
-  tls:
-{{ toYaml .Values.ingress.tls | indent 4 }}
-  {{- end -}}
-{{- end -}}
+              service:
+                name: kibana
+                port:
+                  number: 443
