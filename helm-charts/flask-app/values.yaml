@@ -48,7 +48,7 @@ ingress:
     # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     # nginx.org/ssl-services: "flask-app"
     # nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    # ingress.kubernetes.io/ssl-redirect: "false"
+    # ingress.kubernetes.io/ssl-redirect: "true"
     # nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     # alb.ingress.kubernetes.io/scheme: internet-facing
     # alb.ingress.kubernetes.io/target-type: ip
