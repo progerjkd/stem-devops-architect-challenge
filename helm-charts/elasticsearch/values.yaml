@@ -75,15 +75,17 @@ podAnnotations:
 # additionals labels
 labels: {}
 
-esJavaOpts: "" # example: "-Xmx1g -Xms1g"
+#esJavaOpts: "" # example: "-Xmx1g -Xms1g"
+esJavaOpts: "-Xmx128m -Xms128m" 
+
 
 resources:
   requests:
-    cpu: "1000m"
-    memory: "2Gi"
+    cpu: "100m"
+    memory: "512M"
   limits:
     cpu: "1000m"
-    memory: "2Gi"
+    memory: "512M"
 
 initResources:
   {}
@@ -128,7 +130,7 @@ podSecurityPolicy:
       - emptyDir
 
 persistence:
-  enabled: true
+  enabled: false
   labels:
     # Add default labels for the volumeClaimTemplate of the StatefulSet
     enabled: false
@@ -167,7 +169,7 @@ antiAffinityTopologyKey: "kubernetes.io/hostname"
 
 # Hard means that by default pods will only be scheduled if there are enough nodes for them
 # and that they will never end up on the same node. Setting this to soft will do this "best effort"
-antiAffinity: "hard"
+antiAffinity: "soft"
 
 # This is the node affinity settings as defined in
 # https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#node-affinity-beta-feature
