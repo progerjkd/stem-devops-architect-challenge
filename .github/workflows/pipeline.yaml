@@ -40,7 +40,7 @@ jobs:
                 file: ./Dockerfile
                 platforms: linux/amd64, linux/arm64/v8
                 push: true
-                tags: progerjkd/flask-app:${{ github.event.release.tag_name }}
+                tags: progerjkd/flask-app:latest
     # deployment:
     #   runs-on: 'ubuntu-latest'
     #   steps:
