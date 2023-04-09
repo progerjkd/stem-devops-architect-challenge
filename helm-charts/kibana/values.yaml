@@ -77,17 +77,17 @@ service:
   selector: {}
 
 ingress:
-  enabled: true
-  hosts:
-    - kibana.example.org
+  enabled: false
+  # hosts:
+    # - kibana.localhost.localdomain
     # - localhost.localdomain/kibana
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    kubernetes.io/tls-acme: "true"
-  tls:
-    - secretName: chart-example-tls
-      hosts:
-        - chart-example.local
+  # annotations:
+  #   kubernetes.io/ingress.class: nginx
+  #   kubernetes.io/tls-acme: "true"
+  # tls:
+    # - secretName: chart-example-tls
+    #   hosts:
+    #     - chart-example.local
 
 serviceAccount:
   # Specifies whether a service account should be created
