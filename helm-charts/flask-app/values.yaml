@@ -45,25 +45,9 @@ ingress:
   # className: "alb"
   annotations: 
     kubernetes.io/ingress.class: nginx
-    # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    # nginx.org/ssl-services: "flask-app"
-    # nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    # ingress.kubernetes.io/ssl-redirect: "true"
-    # nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    # alb.ingress.kubernetes.io/scheme: internet-facing
-    # alb.ingress.kubernetes.io/target-type: ip
-    # alb.ingress.kubernetes.io/tags: Environment=dev
-    # alb.ingress.kubernetes.io/group.name: my-group
-    # # alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
-    # alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
-    # alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
-    # alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:815125368722:certificate/55cabade-6ae4-4bd3-9c79-c87298d4f086
-    # kubernetes.io/tls-acme: "true"
   hosts:
     - host: flask.example.org
       paths:
-        # - path: /hello/*
-        #   pathType: ImplementationSpecific
         - path: /
           pathType: Prefix
           # pathType: Prefix
@@ -71,37 +55,6 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - flask.example.org
-
-
-
-###########
-# ingress:
-#   enabled: true
-#   className: "alb"
-#   annotations: 
-#     # kubernetes.io/ingress.class: alb
-#     alb.ingress.kubernetes.io/scheme: internet-facing
-#     alb.ingress.kubernetes.io/target-type: ip
-#     alb.ingress.kubernetes.io/tags: Environment=dev
-#     alb.ingress.kubernetes.io/group.name: my-group
-#     # alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
-#     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
-#     alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
-#     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:815125368722:certificate/55cabade-6ae4-4bd3-9c79-c87298d4f086
-#     # kubernetes.io/tls-acme: "true"
-#   hosts:
-#     - host: prod.stem.devopswarrior.io
-#       paths:
-#         - path: /hello/*
-#           pathType: ImplementationSpecific
-#         - path: /
-#           pathType: ImplementationSpecific
-#           # pathType: Prefix
-#   # tls:
-#   #  - secretName: chart-example-tls
-#   #    hosts:
-#   #      - prod.stem.devopswarrior.io
-###########
 
 resources:
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -119,7 +72,7 @@ autoscaling:
   enabled: true
   minReplicas: 2
   maxReplicas: 5
-  targetCPUUtilizationPercentage: 20
+  targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
 nodeSelector: {}
