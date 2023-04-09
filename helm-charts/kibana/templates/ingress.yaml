@@ -1,25 +1,61 @@
-# Source: flask-app/templates/ingress.yaml
+{{- if .Values.ingress.enabled -}}
+{{- $fullName := include "kibana.fullname" . -}}
+{{- $httpPort := .Values.httpPort -}}
+{{- $pathtype := .Values.ingress.pathtype -}}
+{{- $ingressPath := .Values.ingress.path -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: kibana
-  labels:
-    chart: kibana-3.2.8
-    app.kubernetes.io/name: kibana
-    app.kubernetes.io/instance: kibana
-    app.kubernetes.io/version: "1.16.0"
-    app.kubernetes.io/managed-by: Helm
+  name: {{ $fullName }}
+  labels: {{ include "kibana.labels" . | nindent 4 }}
+{{- with .Values.ingress.annotations }}
   annotations:
-    kubernetes.io/ingress.class: nginx
+{{ toYaml . | indent 4 }}
+{{- end }}
 spec:
+  {{- if .Values.ingress.className }}
+  ingressClassName: {{ .Values.ingress.className | quote }}
+  {{- end }}
+{{- if .Values.ingress.tls }}
+  tls:
+  {{- if .ingressPath }}
+  {{- range .Values.ingress.tls }}
+  - hosts:
+    {{- range .hosts }}
+      - {{ . }}
+    {{- end }}
+    secretName: {{ .secretName }}
+  {{- end }}
+{{- else }}
+{{ toYaml .Values.ingress.tls | indent 4 }}
+  {{- end }}
+{{- end }}
   rules:
-    - host: "kibana.example.org"
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: kibana
-                port:
-                  number: 443
+  {{- range .Values.ingress.hosts }}
+    {{- if $ingressPath }}
+  - host: {{ . }}
+    http:
+      paths:
+      - path: {{ $ingressPath }}
+        pathType: {{ $pathtype }}
+        backend:
+          service:
+            name: {{ $fullName }}
+            port: 
+              number: {{ $httpPort }}
+  {{- else }}
+  - host: {{ .host }}
+    http:
+      paths:
+      {{- range .paths }}
+      - path: {{ .path }}
+        pathType: {{ $pathtype }}
+        backend:
+          service:
+            name: {{ $fullName }}
+            port:
+              number: {{ .servicePort | default $httpPort }}
+      {{- end }}
+  {{- end }}
+ {{- end }}
+ {{- end }}
