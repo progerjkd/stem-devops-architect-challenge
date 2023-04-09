@@ -768,7 +768,7 @@ service:
   ## @param service.ports [object] Service ports
   ##
   ports:
-    http: 80
+    # http: 80
     https: 443
   ## @param service.targetPorts [object] Map the controller service HTTP/HTTPS port
   ##
