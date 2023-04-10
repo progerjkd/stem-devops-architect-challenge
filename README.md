@@ -56,14 +56,24 @@ Finally, we should be able to access the folowing URLs on the browser (only HTTP
 
 https://grafana.example.org
 
+[![](img/grafana2.png)]()
+
+
 https://kibana.example.org/
+
+[![](img/kibana.png)]()
+
 
 https://flask.example.org/hello/user1
 
-The credentials to access the services were sent via email.
+[![](img/flask.png)]()
 
+
+The argocd service can be accessible via the ELB URL: https://a44e2b17677bc4d9993f3e6ae36148fd-308439214.us-east-1.elb.amazonaws.com/
 
 [![](img/argo.png)]()
+
+The credentials to access the services were sent via email.
 
 # TO DO:
 
