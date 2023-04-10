@@ -35,7 +35,7 @@ The helm char used to deploy the sample application. The application is exposed 
 # GitHub Actions pipeline
 
 A github action pipeline is defined in the file `.github/workflows/pipeline.yaml`.
-The pipeline fetchs the app code, build the docker image and uploads it to docker hub.
+The pipeline fetchs the app code, builds the docker image and uploads it to docker hub.
 
 
 
@@ -60,8 +60,12 @@ https://kibana.example.org/
 
 https://flask.example.org/hello/user1
 
+The credentials to access the services were sent via email.
 
-TO DO:
+
+[![](img/argo.png)]()
+
+# TO DO:
 
 - I'd say that for fully acomplish the goals, it would be needed to fully integrate the CI and CD stages. After uploading the docker image to docker hub, generate an image version and tag, and then update the helm chart definition file to use the newly created image version.
 
@@ -72,6 +76,6 @@ We could measure the Service Level Indicators (SLI) by inspecting the grafana da
 SLIs can measure single entities like hosts, pods, or services, or across multiple entities using metric labels. 
 When SLIs are breached, they can be actioned by integrating with downstream systems like PagerDuty, slack or automation end points to alert SRE teams. 
 
-[![](https://grafana.com/api/dashboards/8793/images/5487/image)]()
+[![](img/grafana.png)]()
 
 
